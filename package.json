@@ -1,13 +1,13 @@
 {
-	"name": "qwery",
+	"name": "ender-fittext",
 	"description": "an Ender plugin for inflating web type",
 	"version": "1.0",
 	"homepage": "https://github.com/Calvein/ender-fitText",
 	"author": "François Robichet <@calvein> (http://francois.robichet.com)",
 	"repository": {
-        "type": "git",
-    	"url": "https://github.com/Calvein/ender-fitText.git"
-    }
+		"type": "git",
+		"url": "https://github.com/Calvein/ender-fitText.git"
+	},
 	"main": "./ender-fitText.js",
 	"keywords": ["ender", "fittext", "typography"],
 	"ender": "noop"
