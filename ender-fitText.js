@@ -11,16 +11,25 @@
 
 !(function($) {
 	$.ender({
-		fitText: function(kompressor) {
+		fitText: function(kompressor, options) {
+	    
+			var settings = {
+				'minFontSize' : Number.NEGATIVE_INFINITY,
+				'maxFontSize' : Number.POSITIVE_INFINITY
+			};
 	
 			return this.each(function() {
 				var $this = $(this),                                      // store the object
-					origFontSize = parseFloat($this.css('font-size')),   // init the font sizes
-					compressor = kompressor || 1;                        // set the compressor
+					compressor = kompressor || 1;                         // set the compressor
+		
+				if (options) {
+					for (var option in options)
+						settings[option] = options[option];
+				}
 
 				// Resizer() resizes items based on the object width divided by the compressor * 10
 				var resizer = function() {
-					$this.css('font-size', Math.min($this.width() / (compressor * 10), origFontSize));
+					$this.css('font-size', Math.max(Math.min($this.width() / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
 				};
 
 				// Call once to set.
