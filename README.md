@@ -1,6 +1,6 @@
 Ender FitText
 -------
-It's [FitText.js](http://fittextjs.com/) -- for Ender!
+It's [FitText.js](http://fittextjs.com/) -- for [Ender](http://ender.no.de/)!
 
 Use it:
 
