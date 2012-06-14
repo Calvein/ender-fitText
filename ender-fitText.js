@@ -1,43 +1,40 @@
-/*!    
-* ender-fitText 1.0
+/*!
+* ender-fitText 1.0.2
 *
 * Copyright 2011, Dave Rupert http://daverupert.com
 * Ported to ender by François Robichet http://francois.robichet.com
-* Released under the WTFPL license 
+* Released under the WTFPL license
 * http://sam.zoy.org/wtfpl/
 *
-* Date: Thu May 05 14:23:00 2011 -0600
+* Date: Jun 14 19:30:00 2012
 */
 
 !(function($) {
-	$.ender({
-		fitText: function(kompressor, options) {
-	    
-			var settings = {
-				'minFontSize' : Number.NEGATIVE_INFINITY,
-				'maxFontSize' : Number.POSITIVE_INFINITY
-			};
-	
-			return this.each(function() {
-				var $this = $(this),                                      // store the object
-					compressor = kompressor || 1;                         // set the compressor
-		
-				if (options) {
-					for (var option in options)
-						settings[option] = options[option];
-				}
+    $.ender({
+        fitText: function(kompressor, options) {
 
-				// Resizer() resizes items based on the object width divided by the compressor * 10
-				var resizer = function() {
-					$this.css('font-size', Math.max(Math.min($this.width() / (compressor*10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)));
-				};
+            // Setup options
+            var compressor = kompressor || 1
+              , settings = {
+                    minFontSize : options.minFontSize || Number.NEGATIVE_INFINITY
+                  , maxFontSize : options.maxFontSize || Number.POSITIVE_INFINITY
+                };
 
-				// Call once to set.
-				resizer();
+            return this.each(function() {
+                // Store the object
+                var $this = $(this)
 
-				// Call on resize. Opera debounces their resize by default. 
-                $(window).resize(resizer);
-			});
-		}
-	}, true);
-})(ender);
+                // Resizer() resizes items based on the object width divided by the compressor * 10
+                var resizer = function () {
+                    $this.css('font-size', Math.max(Math.min($this.width() / (compressor * 10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)))
+                }
+
+                // Call once to set.
+                resizer();
+
+                // Call on resize. Opera debounces their resize by default.
+                $(window).on('resize', resizer);
+            })
+        }
+    }, true)
+})(ender)
