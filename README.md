@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/Calvein/ender-fitText.png)](http://travis-ci.org/Calvein/ender-fitText)
 Ender FitText
 -------
 It's [FitText.js](http://fittextjs.com/) -- for [Ender](http://ender.no.de/)!
